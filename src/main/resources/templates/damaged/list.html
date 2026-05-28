@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Damaged Items List</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background-color: #f4f4f4; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #e74c3c; color: white; }
+        .btn { text-decoration: none; padding: 10px 15px; color: white; border-radius: 5px; font-weight: bold; display: inline-block; }
+        .btn-back { background: #333; margin-right: 10px; }
+        .btn-add { background: #2ecc71; }
+        .btn-edit { background: #3498db; padding: 5px 10px; font-size: 14px; }
+        .top-bar { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h2>⚠️ Damaged Items Management</h2>
+    
+    <div class="top-bar">
+        <a href="/" class="btn btn-back">⬅ Back to Dashboard</a>
+        <a href="/damaged-items/new" class="btn btn-add">➕ Add Damaged Item</a>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Reason</th>
+                <th>Reported Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${damagedItems}">
+                <td th:text="${item.id}">1</td>
+                <td th:text="${item.productName}">Product Name</td>
+                <td th:text="${item.quantity}">0</td>
+                <td th:text="${item.reason}">Reason</td>
+                <td th:text="${item.reportedDate}">2026-05-28</td>
+                <td>
+                    <a th:href="@{/damaged-items/edit/{id}(id=${item.id})}" class="btn btn-edit">✏️ Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
