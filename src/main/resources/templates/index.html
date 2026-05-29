@@ -4,21 +4,38 @@
     <meta charset="UTF-8">
     <title>Inventory System</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; }
         .navbar {
-            background-color: #333;
+            background-color: #2c3e50;
             color: white;
             padding: 15px 20px;
             font-size: 20px;
+            font-weight: bold;
         }
-        .container {
-            padding: 30px;
+        .container { padding: 30px; }
+        h2 { color: #2c3e50; margin-bottom: 20px; }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
         }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 160px;
+            text-align: center;
+            border-left: 5px solid #3498db;
+        }
+        .stat-card h1 { font-size: 36px; color: #3498db; }
+        .stat-card p { color: #666; font-size: 14px; margin-top: 5px; }
+
+        /* Cards Section */
         .cards {
             display: flex;
             flex-wrap: wrap;
@@ -27,24 +44,64 @@
         .card {
             background: white;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 180px;
             text-align: center;
+            transition: transform 0.2s;
         }
-        .card h3 {
-            color: #333;
-        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #2c3e50; font-size: 16px; margin-bottom: 10px; }
         .card a {
             text-decoration: none;
-            color: #007bff;
+            color: #3498db;
+            font-size: 14px;
         }
+        .card a:hover { color: #2980b9; }
     </style>
 </head>
 <body>
     <div class="navbar">📦 Inventory Management System</div>
     <div class="container">
         <h2>Welcome to Inventory System</h2>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <h1 th:text="${totalProducts}">0</h1>
+                <p>📦 Products</p>
+            </div>
+            <div class="stat-card">
+                <h1 th:text="${totalCustomers}">0</h1>
+                <p>👥 Customers</p>
+            </div>
+            <div class="stat-card">
+                <h1 th:text="${totalSuppliers}">0</h1>
+                <p>🏭 Suppliers</p>
+            </div>
+            <div class="stat-card">
+                <h1 th:text="${totalOrders}">0</h1>
+                <p>📋 Orders</p>
+            </div>
+            <div class="stat-card">
+                <h1 th:text="${totalEmployees}">0</h1>
+                <p>👨‍💼 Employees</p>
+            </div>
+            <div class="stat-card">
+                <h1 th:text="${totalWarehouses}">0</h1>
+                <p>🏪 Warehouses</p>
+            </div>
+            <div class="stat-card">
+                <h1 th:text="${totalUsers}">0</h1>
+                <p>👤 Users</p>
+            </div>
+            <div class="stat-card">
+                <h1 th:text="${totalCategories}">0</h1>
+                <p>🏷️ Categories</p>
+            </div>
+        </div>
+
+        <!-- Cards -->
         <div class="cards">
             <div class="card">
                 <h3>📦 Products</h3>
